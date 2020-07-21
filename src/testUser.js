@@ -22,6 +22,7 @@ export default function PersonList() {
       .catch((e) => console.log("Пользователи не загрузились", e))      
     
   })
+
   return (
      <>
     <h1>{tableProperties.h1}</h1>    

@@ -27,8 +27,6 @@ const typeList = 'user'
 const typeListRus = 'Список пользователей'
 
 const showHandle = (row, index) => {  
-
-
     // let num = num + 1; 
     return <tr>
     <td> <input type="checkbox" /> </td>
