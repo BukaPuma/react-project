@@ -17,8 +17,7 @@ export default function PersonList() {
         const usersData = res.data;            
         // console.log('myPeople',myPeople);
         setUsers( usersData );
-        console.log(users.rows);     
-      })
+            })
       .catch((e) => console.log("Пользователи не загрузились", e))      
     
   })
@@ -29,8 +28,7 @@ export default function PersonList() {
       <table class="biblio-table"> 
       {tableProperties.fieldNames.map((caption) => 
       {return <th>{caption}</th>})
-      }      
-      
+      }            
         
              { users.rows.map((person, id) => { id= id+1; return  <tr> 
                                                             <td> <input type="checkbox" /> </td>  

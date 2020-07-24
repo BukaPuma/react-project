@@ -6,6 +6,8 @@ import { BASE_URL } from './Utils/Constants'
 /// post
 export default function UserCard(props) {
 
+    const dataType = 'user'
+
     const [user, setUser] = React.useState({
         id: 50,
         firstName: 'Nata',
@@ -17,63 +19,66 @@ export default function UserCard(props) {
         books: []
     });
 
-    const handleChange = event => {
-        // this.setState({ fistame: event.target.value });
-        // const usersData = {
-        //     id : 100,
-        //     firstName: 'Наталья',
-        //     lastName: 'Руденко',
-        //     email: 'melvia@mail.ru',
-        //     phone: '+79292692469',
-        //     createdAt: new Date(),
-        //     updatedAt: new Date(),
-        //     books: []
-        // }
+    const handleChange = (event, user) => {
         const target = event.target;
-        // const value = target.name === 'isGoing' ? target.checked : target.value;
         const name = target.name;
         const value = target.value;
         setUser(user =>({
             ...user, [name] : value}))            
         // setUser(usersData)
         console.log('изменение карточки', user);
-    }
+    }    
 
     const handleSubmit = event => {
         event.preventDefault()
         // setUsers( usersData );
         setUser(user =>({
             ...user, id : props.userCount + 1 }))   
-        axios.post(`${BASE_URL}user`, user)
+        axios.post(`${BASE_URL}${dataType}`, user)
             .then(res => {
                 console.log("результат", res)
             })
             .catch((e) =>
-                console.log("Пользователи не загрузились", e))
+                console.log("Данные не загрузились", e))
     }
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label>
-                 Фамилия
-                    <input type="text" name="firstName" onChange={handleChange} />
-                </label>
-                <label>
-                    Имя
-                    <input type="text" name="lastName" onChange={handleChange} />
-                </label>
-                <label>
-                    Электронная почта
-                    <input type="text" name="phone" onChange={handleChange} />
-                </label>
-                <label>
-                    Телефон
-                    <input type="text" name="phone" onChange={handleChange} />
-                </label>
+            <form class="contact_form" onSubmit={handleSubmit}>
+                <ul>
+                <li>
+                    <h2>Добавить читателя</h2>
+                    <span className="required_notification">* Обязательные для заполнения поля</span>
+                </li>
+                    <li>
+                        <label for="lastName"> Фамилия *:</label>
+                        <input type="text" name="lastName" placeholder="Пушкин" onChange={handleChange} required />  
+                        
+                    </li>
 
-                <button type="submit">Add user</button>
+                    <li>
+                        <label for="firstName"> Имя *:</label>
+                        <input type="text" name="firstName" placeholder="Александр" onChange={handleChange} required /> 
+      
+                    </li>
+                    <li>
+                        <label for="email"> e-mail:</label>
+                        <input type="email" name="email" placeholder="pushkina@mail.ru" onChange={handleChange} />     
+  
+                    </li>                    
+                    <li>
+                        <label for="phone"> Телефон:</label>
+                        <input type="tel" name="phone" placeholder="89292692469" pattern="\d{11}" onChange={handleChange} required />                    
+  
+                    </li>                    
+                    <li>
+                    <button className="submit" type="submit">Добавить</button> <span class="user-card__answer" hidden>Читатель {user.lastName} {user.firstName} добавлен</span>
+                    </li>
+
+
+                </ul>
+                   
             </form>
-        </div>
+
+
     )
 
 }

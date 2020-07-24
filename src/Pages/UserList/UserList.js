@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import List from '../../Utils/GetList'
+import List from '../../Utils/List'
 import axios from 'axios'
+import ListItem from '../../Components/ListItem/ListItem'
 
 const tableProperties = {
     fieldNames: [
-        "", 
-        "№", 
+           "№", 
         "Фамилия", 
         "Имя", 
         "e-mail", 
-        "Телефон"
+        "Телефон",
+        ""
     ],
     h1: "Список пользователей"
 }
@@ -18,7 +19,7 @@ const fieldVisible =  {
     checkField : '',
     num:    "№", 
     lastName: "Фамилия", 
-    fisrtName: "Имя", 
+    firstName: "Имя", 
     email:"e-mail", 
     phone: "Телефон"
 }
@@ -28,21 +29,14 @@ const typeListRus = 'Список пользователей'
 
 const showHandle = (row, index) => {  
     // let num = num + 1; 
-    return <tr>
-    <td> <input type="checkbox" /> </td>
-    <td>{index + 1}</td>
-    <td>{row.lastName}</td>
-    <td>{row.firstName}</td>
-    <td>{row.email}</td>
-    <td>{row.phone}</td>
-  </tr>
-  }
+    return <ListItem row={row} index={index}  />
+}
 
 
 
 export default function UserList() {
     return (
-        <List tableProperties={tableProperties} typeList={typeList} typeListRus={typeListRus} showHandle={showHandle} fieldVisible={fieldVisible} ></List>
+        <List tableProperties={tableProperties} typeList={typeList} typeListRus={typeListRus} showHandle={showHandle} fieldVisible={fieldVisible}  ></List>
     )
 
 }
