@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import List from '../../Utils/List'
+import List from '../../Widgets/List/List'
 import axios from 'axios'
 import ListItem from '../../Components/ListItem/ListItem'
+import { Link } from 'react-router-dom'
 
 const tableProperties = {
     fieldNames: [
@@ -29,7 +30,19 @@ const typeListRus = 'Список пользователей'
 
 const showHandle = (row, index) => {  
     // let num = num + 1; 
-    return <ListItem row={row} index={index}  />
+    return (<tr>
+                
+        <td>{index + 1}</td>
+        <td>{row.lastName}</td>
+        <td>{row.firstName}</td>
+        <td>{row.email}</td>
+        <td>{row.phone}</td>
+        <td> <Link  key={row.id} to={{ pathname: `/${typeList}/${row.id}` }}>редактировать</Link> </td>
+
+
+    </tr>)
+
+ 
 }
 
 

@@ -2,21 +2,21 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../../Utils/Constants'
 import CreateCard from '../../Widgets/CreateCard/CreateCard'
-import {USER_TEMPLATE} from '../../Templates/UserTemplate'
+import {BOOK_TEMPLATE} from '../../Templates/BookTemplate'
 
 
 /// post
-export default function UserCardCreate(props) {
+export default function BookCard(props) {
     // const [user, setUser] = React.useState({...USER_TEMPLATE});
     const record = {
         id: '',
-        firstName: '',
-        lastName:'',
-        email:'',
-        phone: ''
+        title: '',
+        info:'',
+        author:'',
+        user: ''
 
     }
-    return <CreateCard templateRecord={USER_TEMPLATE} dataType='user' dataRecord = {record} />
+    return <CreateCard templateRecord={BOOK_TEMPLATE} dataType='book' dataRecord = {record} />
 
 }
 

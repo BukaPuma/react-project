@@ -1,12 +1,25 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import { USER_TEMPLATE } from '../../Templates/UserTemplate'
-import ChangeCard from '../../Utils/ChangeCard'
+import ChangeCard from '../../Widgets/ChangeCard/ChangeCard'
+import {USER_TEMPLATE} from '../../Templates/UserTemplate'
 
-const UserCardChange = (props) => {
-    const {dataRecord} = props  
-    return (<ChangeCard templateRecord={USER_TEMPLATE} dataType='user' parId='11' dataRecord={dataRecord} />)
+const  UserCardChange = (props) => {
+const record = {
+    id: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: ''
+    }
+
+const haldleBooks = () => {
+    return
 }
+    
+    return (<ChangeCard  dataRecord={record} dataType='user' templateRecord={USER_TEMPLATE} />) 
+}
+    
+
 
 
 export default UserCardChange

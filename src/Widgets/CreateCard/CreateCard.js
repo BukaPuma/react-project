@@ -1,32 +1,28 @@
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { BASE_URL } from './Constants'
+import { BASE_URL } from '../../Utils/Constants'
 import GetCard from './CreateCard'
 import {Link} from 'react-router-dom'
 
 
 const CreateCard = (props) => {
-    const { templateRecord, dataType, dataRecord, handleSubmit, fillFields} = props
+    const { templateRecord, dataType, dataRecord, fillFields} = props
     
     const [data, setData] = React.useState('');
     
     
-useEffect(() => {
-    
-    //Мы хотим получить данные только при пустом значении data
-    if (data=='') { 
-
-        console.log(props)
-        axios.get(`${BASE_URL}/${dataType}/11`)
-        .then(res => {
-            const elementsData = res.data;
-            // console.log('myPeople',myPeople);
-            setData(elementsData);
-            // console.log(elements.rows);
-        })
-        .catch((e) => console.log(`Данные не загрузились`, e))
-} })
+    const handleSubmit = event => {
+        event.preventDefault()
+        // setUsers( usersData );
+        console.log(`${BASE_URL}/${dataType}`)
+        axios.post(`${BASE_URL}/${dataType}`, data)
+            .then(res => {
+                console.log("результат", res)
+            })
+            .catch((e) =>
+                console.log("Данные не загрузились", e))
+    }
 
 
 const handleChange = event => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import List from '../../Utils/List'
+import List from '../../Widgets/List/List'
 import axios from 'axios'
 import ListItem from '../../Components/ListItem/ListItem'
 import { Link } from 'react-router-dom'
@@ -50,7 +50,7 @@ const showHandle = (row, index) => {
     <td>{formatDate(row.birthday)}</td>
     {/* <td>{ getBooks(row.books)}</td> */}
     <td>книги</td>
-    <td> <Link  key={row.id} to={{ pathname: `/{typeList}}/${row.id}` }}>редактировать</Link> </td>
+    <td> <Link  key={row.id} to={{ pathname: `/author/${row.id}` }}>редактировать</Link> </td>
     </tr>
     
     )

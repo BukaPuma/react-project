@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import {BASE_URL} from '../Utils/Constants'
-import AuthorList from '../Pages/AuthorList/AuthorList';
-
+import {BASE_URL} from '../../Utils/Constants'
+import AuthorList from '../../Pages/AuthorList/AuthorList';
+import {Link} from 'react-router-dom'
 
 
 
@@ -94,6 +94,9 @@ export default function List({ tableProperties, typeListRus, typeList, showHandl
         {(typeList==='user') && users.rows.map(showHandle)}
         {(typeList==='author') && authors.map(showHandle)}
         {(typeList==='book') && books.map(showHandle)}
+        
+        <Link className="list__link" to="/">К списку</Link>
+        <Link className="green-button"  to={{ pathname: `/${typeList}create` }}>Создать</Link> 
       </table>
 
     </>

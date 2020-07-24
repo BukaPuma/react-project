@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { BASE_URL } from './Constants'
-import GetCard from './GetCard'
+import { BASE_URL } from '../../Utils/Constants'
 import {Link} from 'react-router-dom'
+import { useParams, Route } from 'react-router-dom'
 
+const ChangeCard = (props) => {
 
-const CommonCard = (props) => {
-    const { templateRecord, dataType, dataRecord, handleSubmit, fillFields} = props
+    const {id} = useParams();
+
+    const { templateRecord, dataType, dataRecord, fillFields , h2} = props
     
-    const [data, setData] = React.useState('');
-    
+    const [data, setData] = React.useState('');    
     
     useEffect(() => {
       
         //Мы хотим получить данные только при пустом значении data
-        if (data=='') { 
-   
-            console.log(props)
-            axios.get(`${BASE_URL}${dataType}/11`)
+        if (data=='') {   
+            
+            axios.get(`${BASE_URL}/${dataType}/${id}`)
             .then(res => {
               const elementsData = res.data;
               // console.log('myPeople',myPeople);
@@ -25,9 +25,7 @@ const CommonCard = (props) => {
               // console.log(elements.rows);
             })
             .catch((e) => console.log(`Данные не загрузились`, e))
-        } })
-
-
+ } })
     const handleChange = event => {
         const target = event.target;
         const name = target.name;
@@ -39,16 +37,19 @@ const CommonCard = (props) => {
         console.log('изменение карточки', data);
     }
 
-    const handleSubmit = event => {
+
+    const handleSubmit = event => {       
         event.preventDefault()
-        axios.post(`${BASE_URL}${dataType}`, data)
+        let sendData = {...data,  updatedAt : new Date()}
+        delete sendData['id']
+
+        axios.patch(`${BASE_URL}/${dataType}/${id}`, sendData)
             .then(res => {
-                console.log("результат", res)
+                console.log("результат", res)                
             })
             .catch((e) =>
                 console.log("Данные не загрузились", e))
     }
-
 
 
     const template = templateRecord.fields.map((field, key) => {
@@ -61,23 +62,25 @@ const CommonCard = (props) => {
     }
     )
     return (
-        <form className={"contact_form"} onSubmit={handleSubmit} >
+        <form className={"data_form"} onSubmit={handleSubmit} >
             <ul>
                 <li>
-                    <h2> Редактировать читателя </h2>
+                    <h2> {templateRecord.h2} </h2>
                     <span className="required_notification">* Обязательные для заполнения поля</span>
                 </li>
                 {template}
                 <li>
-                    <button className="submit" type="submit">Добавить</button>
+                    <button className="green-button" type="submit">Добавить</button>
                     <span className="user-card__answer" hidden> Данные изменены</span>
-                     <Link to="/userlist">К списку</Link>
-                    {/* <span className="user-card__answer" hidden>Читатель {user.lastName} {user.firstName} добавлен</span> */}
+                     <Link className="change-card__link" to={{ pathname: `/${dataType}list`}}>К списку</Link>
+                     
+                    {/* <span className="user-card__answer" hidden>Данные добавлены</span> */}
                 </li>
             </ul>
         </form>
     )
 }
 
-export default CommonCard
+export default ChangeCard
+
 

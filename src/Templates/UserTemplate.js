@@ -1,7 +1,8 @@
 
 export const  USER_TEMPLATE = {
         className : "contact_form",
-        onSubmit : 'handleSubmit',       
+        onSubmit : 'handleSubmit',   
+        h2: "Редактировать читателя",    
         fields : [
             {        
             name : "lastName", 
