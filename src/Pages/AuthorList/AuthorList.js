@@ -48,7 +48,7 @@ const showHandle = (row, index) => {
     <td>{row.firstName}</td>                                                             
     <td>{row.info}</td>
     <td>{formatDate(row.birthday)}</td>
-    {/* <td>{ getBooks(row.books)}</td> */}
+   
     <td>книги</td>
     <td> <Link  key={row.id} to={{ pathname: `/author/${row.id}` }}>редактировать</Link> </td>
     </tr>

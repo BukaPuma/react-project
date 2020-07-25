@@ -1,14 +1,14 @@
 import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
-import {ThemeContext} from '../../context'
+
 const ListItem = (props) => {
 
     const { row, index, path } = props
 
-     const { parId, setId } = useContext(ThemeContext);
+
 
     // setId(row.id)
-     console.log(parId)
+
     return (
         <tbody>
             <tr>

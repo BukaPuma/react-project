@@ -16,7 +16,11 @@ export default function UserCardCreate(props) {
         phone: ''
 
     }
+
+    
+    
     return <CreateCard templateRecord={USER_TEMPLATE} dataType='user' dataRecord = {record} />
+
 
 }
 

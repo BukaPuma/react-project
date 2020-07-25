@@ -4,15 +4,12 @@ import './App.css';
 import ReactDOM from 'react-dom';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 // import PersonList from './testUser'
-import ThemeContext, { ThemeProvider } from './context'
 
 import UserList from './Pages/UserList/UserList'
 import AuthorList from './Pages/AuthorList/AuthorList'
 import BookList from './Pages/BookList/BookList'
 import Button from './Components/Buttons/Button.js'
 import CreateCard from './Widgets/CreateCard/CreateCard'
-
-import About from './about'
 import Home from './MainPage'
 import { USER_TEMPLATE } from './Templates/UserTemplate'
 import UserCard from './Pages/UserCardCreate/UserCardCreate'
@@ -27,9 +24,13 @@ import AuthorCardChange from './Pages/AuthorCardChange/AuthorCardChange'
 // import ChangeCard from './Widgets/ChangeCard/ChangeCard'
 
 
+
+
 function App() {
+
+
   return (
-    <ThemeProvider value={'dark'} >
+
       <main>
       
         <Router>
@@ -57,7 +58,7 @@ function App() {
      
       </main>
 
-    </ThemeProvider>
+
   );
 }
 
