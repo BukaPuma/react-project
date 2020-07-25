@@ -4,15 +4,15 @@ import {Link} from 'react-router-dom'
 
 const Home = (props) => {
 
-    return (
-
+    return ( 
+        <>
             <div className="main-list">
+            <h1> Рабочее место библиотекаря </h1>
             <Link className="green-button main-list__button" to="/authorlist">Список авторов</Link>
             <Link className="green-button main-list__button" to="/userlist">Список читателей</Link>
             <Link className="green-button main-list__button" to="/booklist">Список книг</Link>
             </div>
-
-
+        </>
     )
 }
 

@@ -279,7 +279,7 @@ body {font: 14px/21px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", san
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 300px; 
+  width: 500px; 
 }
 
 .main-list__button {
